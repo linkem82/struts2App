@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity @Table( name="APP_USER", schema="S2APP" )
+@NamedQuery(name="user.byEmail", query="select u from User u where u.email >= :email")
 public class User implements Serializable {
 
     private String firstName;

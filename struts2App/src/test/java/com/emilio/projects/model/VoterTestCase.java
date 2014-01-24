@@ -10,8 +10,9 @@ public class VoterTestCase extends PersistenceBaseClass {
 	public void testCreateFind() throws Exception {
 		Voter v = new Voter();
 		Calendar c = new GregorianCalendar();
-		User u = mock(User.class);
-		Event e = mock(Event.class);
+		User u = new User();
+		u.setEmail("emilio@gmail.com");
+		Event e = new Event();
 		c.set(2014, 1, 23, 11, 9);
 		Date d1 = c.getTime();
 		v.setEnrollmentTime(d1);
@@ -20,6 +21,8 @@ public class VoterTestCase extends PersistenceBaseClass {
 		v.setVoteRecordedTime(d2);
 		v.setUser(u);
 		v.setEvent(e);
+		//entityMgr.persist(u);
+		//entityMgr.persist(e);
 		entityMgr.persist(v);
 		entityMgr.flush();
 		Voter test = entityMgr.find(Voter.class,v.getId());
