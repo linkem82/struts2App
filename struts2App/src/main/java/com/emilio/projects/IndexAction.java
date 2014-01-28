@@ -26,13 +26,13 @@ import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 @Conversion()
 public class IndexAction extends ActionSupport {
     
-    private Date now = new Date(System.currentTimeMillis());
+    //private Date now = new Date(System.currentTimeMillis());
     
-    @TypeConversion(converter = "com.emilio.projects.DateConverter")
-    public Date getDateNow() { return now; }
+    //@TypeConversion(converter = "com.emilio.projects.DateConverter")
+    //public Date getDateNow() { return now; }
     
     public String execute() throws Exception {
-        now = new Date(System.currentTimeMillis());
+       // now = new Date(System.currentTimeMillis());
         return SUCCESS;
     }
 }

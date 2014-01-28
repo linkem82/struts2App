@@ -6,20 +6,16 @@
 <struts>
 
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-
-    <package name="myPackage" extends="struts-default">
-
-        <default-action-ref name="index" />
-
-        <action name="index" class="com.emilio.projects.IndexAction">
-            <result>/jsp/index.jsp</result>
-        </action>
-
-        <action name="helloWorld" class="helloWorldAction">
-            <result name="input">/jsp/index.jsp</result>
-            <result>/jsp/helloWorld.jsp</result>
-        </action>
-
-    </package>
-
+	<package name="user" extends="struts-default" namespace="/user" >
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="index" class="com.opensymphony.xwork2.ActionSupport" >
+			<result name="success">/jsp/index.jsp</result>
+		</action>
+		<action name="findUser" method="find" class="com.emilio.projects.user.UserAction" >
+			<result name="input">/jsp/user/findUser-success.jsp</result>
+		</action>
+		<action name="updateUser" method="update" class="com.emilio.projects.user.UserAction" >
+			<result name="success" type="redirectAction">index</result>
+		</action>
+	</package>
 </struts>

@@ -1,8 +1,10 @@
-package com.emilio.projects;
+package com.emilio.projects.user;
 
 import javax.persistence.*;
 
 import com.emilio.projects.model.User;
+import com.emilio.projects.user.UserService;
+import com.emilio.projects.user.UserServiceImpl;
 
 import junit.framework.TestCase;
 
@@ -27,8 +29,7 @@ public class UserServiceImplTestCase extends TestCase {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.remove(em.merge(u));
-		em.getTransaction().commit();
-		
+		em.getTransaction().commit();		
 	}
 
 }

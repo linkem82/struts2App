@@ -7,6 +7,7 @@ package com.emilio.projects.model;
 import org.hibernate.annotations.Generated;
 
 import javax.persistence.*;
+
 import java.util.*;
 import java.io.Serializable;
 
@@ -133,4 +134,82 @@ public class Event  implements Serializable {
     public void setStatus(Progress status) {
         this.status = status;
     }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + duration;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result
+				+ ((lastUpdateTime == null) ? 0 : lastUpdateTime.hashCode());
+		result = prime * result
+				+ ((location == null) ? 0 : location.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((options == null) ? 0 : options.hashCode());
+		result = prime * result
+				+ ((startTime == null) ? 0 : startTime.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + timeZoneOffset;
+		result = prime * result + ((voters == null) ? 0 : voters.hashCode());
+		result = prime * result
+				+ ((votingStartTime == null) ? 0 : votingStartTime.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Event other = (Event) obj;
+		if (duration != other.duration)
+			return false;
+		if (id != other.id)
+			return false;
+		if (lastUpdateTime == null) {
+			if (other.lastUpdateTime != null)
+				return false;
+		} else if (!lastUpdateTime.equals(other.lastUpdateTime))
+			return false;
+		if (location == null) {
+			if (other.location != null)
+				return false;
+		} else if (!location.equals(other.location))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (options == null) {
+			if (other.options != null)
+				return false;
+		} else if (!options.equals(other.options))
+			return false;
+		if (startTime == null) {
+			if (other.startTime != null)
+				return false;
+		} else if (!startTime.equals(other.startTime))
+			return false;
+		if (status != other.status)
+			return false;
+		if (timeZoneOffset != other.timeZoneOffset)
+			return false;
+		if (voters == null) {
+			if (other.voters != null)
+				return false;
+		} else if (!voters.equals(other.voters))
+			return false;
+		if (votingStartTime == null) {
+			if (other.votingStartTime != null)
+				return false;
+		} else if (!votingStartTime.equals(other.votingStartTime))
+			return false;
+		return true;
+	}
+    
 }

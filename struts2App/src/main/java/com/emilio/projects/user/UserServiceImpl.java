@@ -1,6 +1,7 @@
-package com.emilio.projects;
+package com.emilio.projects.user;
 
 import javax.persistence.*;
+
 import com.emilio.projects.model.User;
 
 public class UserServiceImpl implements UserService {

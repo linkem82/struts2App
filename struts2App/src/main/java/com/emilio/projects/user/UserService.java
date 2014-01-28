@@ -1,4 +1,4 @@
-package com.emilio.projects;
+package com.emilio.projects.user;
 
 import com.emilio.projects.model.User;
 
