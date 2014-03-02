@@ -21,7 +21,7 @@
 		</repository>		
 	    <repository>
 	      <id>my-internal-site</id>
-	      <url>file://Users/Emilio/.m2/repository/com/oracle/ojdbc14/10.2.0.3.0/</url>
+	      <url>file://C:/Users/Emilio/.m2/repository/com/oracle/ojdbc5/10.2.0.3.0/</url>
 	    </repository>
   	</repositories>	
 
@@ -127,7 +127,7 @@
 		<!-- oracle jdbc driver -->
 		<dependency>
 			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc14</artifactId>
+			<artifactId>ojdbc5</artifactId>
 			<version>10.2.0.3.0</version>
 		</dependency>
 		

@@ -61,5 +61,10 @@ public class Address extends Location {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Address [address=" + address + ", zipcode=" + zipcode + "]";
+	}	
     
 }

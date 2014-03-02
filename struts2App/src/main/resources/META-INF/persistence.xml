@@ -7,7 +7,7 @@
 	<properties>
 		<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
 		<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.1.103:1521:xe" />
+		<property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.43.66:1521:xe" />
 		<property name="hibernate.connection.username" value="hr"/>
 		<property name="hibernate.connection.password" value="arciba" />
 		<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>

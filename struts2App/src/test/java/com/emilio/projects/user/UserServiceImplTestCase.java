@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import com.emilio.projects.model.User;
 import com.emilio.projects.user.UserService;
-import com.emilio.projects.user.UserServiceImpl;
 
 import junit.framework.TestCase;
 

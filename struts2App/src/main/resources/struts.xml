@@ -4,7 +4,6 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
 	<package name="user" extends="struts-default" namespace="/user" >
 		<default-interceptor-ref name="paramsPrepareParamsStack" />
@@ -13,9 +12,25 @@
 		</action>
 		<action name="findUser" method="find" class="com.emilio.projects.user.UserAction" >
 			<result name="input">/jsp/user/findUser-success.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
 		</action>
 		<action name="updateUser" method="update" class="com.emilio.projects.user.UserAction" >
 			<result name="success" type="redirectAction">index</result>
+			<result name="input">/jsp/user/findUser-success.jsp</result>
+<!-- 			<result name="dupPK">/jsp/user/findUser-success.jsp</result>
+			<exception-mapping result="dupPK"
+				exception="javax.persistence.PersistenceException" />
+ -->			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
+		</action>
+		<action name="getPortrait" method="getInputStream" class="com.emilio.projects.user.UserAction" >
+			<result name="success" type="stream">
+				<param name="contentType">image</param>
+				<param name="inputName">inputStream</param>
+			</result>
 		</action>
 	</package>
 </struts>

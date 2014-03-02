@@ -8,9 +8,10 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import com.opensymphony.xwork2.validator.annotations.*;
 
 @Entity @Table( name="APP_USER", schema="S2APP" )
-@NamedQuery(name="user.byEmail", query="select u from User u where u.email >= :email")
+@NamedQuery(name="user.byEmail", query="select u from User u where u.email = :email")
 public class User implements Serializable {
 
     private String firstName;
@@ -23,16 +24,19 @@ public class User implements Serializable {
     public String getEmail() {
         return email;
     }
-
+    
+    @EmailValidator(message="Validation Error", key="validate.email")
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     @Column(name="FIRST_NAME")
     public String getFirstName() {
         return firstName;
     }
-
+    
+    @RequiredStringValidator(
+    		message="Validation Error", key="validate.notEmpty", trim=true)   
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -41,7 +45,9 @@ public class User implements Serializable {
     public String getLastName() {
         return lastName;
     }
-
+    
+    @RequiredStringValidator(
+    		message="Validation Error", key="validate.notEmpty", trim=true)   
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -50,7 +56,13 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
-
+    
+    @RequiredStringValidator(
+    		message="Validation Error", key="validate.notEmpty",
+    		trim=true, shortCircuit=true)
+    @StringLengthFieldValidator(
+    		message="Length too short", key="validate.minLength.6",
+    		trim=true, minLength="6")
     public void setPassword(String password) {
         this.password = password;
     }

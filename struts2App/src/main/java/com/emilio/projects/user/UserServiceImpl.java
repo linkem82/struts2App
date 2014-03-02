@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import com.emilio.projects.model.User;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements com.emilio.projects.user.UserService {
 	
 	private EntityManagerFactory emf;
 	private EntityManager entityMgr;
@@ -20,15 +20,21 @@ public class UserServiceImpl implements UserService {
 		Query q = (Query) entityMgr.createNamedQuery("user.byEmail");
 		q.setParameter("email", email);
 		User u = (User)q.getSingleResult();
-		//entityMgr.flush();
+		entityMgr.flush();
+		tx.commit();
 		return u;
 	}
 
-	public void persistUser(User user) {
+	public void persistUser(User user)  {
 		EntityTransaction tx = entityMgr.getTransaction();		
 		tx.begin();
-		entityMgr.persist(user);
-		//entityMgr.flush();
+		try {
+			entityMgr.persist(user);
+			entityMgr.flush();
+		} catch(RollbackException e) {
+			//tx.rollback();
+			throw (RuntimeException)e.getCause();
+		}
 		tx.commit();		
 
 	}
